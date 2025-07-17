@@ -90,6 +90,8 @@ Dưới đây là cấu trúc thư mục của dự án **DevShare Lite**:
    - Cập nhật tệp `.env` trong thư mục `backend` với thông tin kết nối đến cơ sở dữ liệu của bạn:
      ```plaintext
      DATABASE_URL="mysql://username:password@localhost:3306/database_name"
+     ACCESS_TOKEN_KEY="password"
+     REFRESH_TOKEN_KEY="password"
      ```
 5. **Chạy migration Prisma**:
    ```bash
