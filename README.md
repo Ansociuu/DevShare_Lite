@@ -105,6 +105,7 @@ Dưới đây là cấu trúc thư mục của dự án **DevShare Lite**:
    npm run dev
    ```      
 8. **Truy cập ứng dụng**: Mở trình duyệt và truy cập `http://localhost:3000` để xem ứng dụng.   
+
 ## 6. Tài liệu tham khảo
 - [Nest.js Documentation](https://docs.nestjs.com/)
 - [Prisma Documentation](https://www.prisma.io/docs/)
