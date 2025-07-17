@@ -13,7 +13,7 @@ Cơ sở dữ liệu này bao gồm các bảng chính sau:
 - **post_tags**: Bảng phụ để quản lý mối quan hệ giữa bài viết và thẻ.
 
 ## Sơ đồ quan hệ thực thể (ERD)
-![ERD](images/Erd.png)
+![ERD](screenshots/Erd.png)
 
 ## Chi tiết các bảng và trường dữ liệu
 
