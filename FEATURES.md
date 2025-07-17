@@ -105,8 +105,4 @@
 ---
 
 ## Chú thích ảnh chụp màn hình
-Ví dụ:
-- `login.jpg`: Ảnh chụp màn hình trang đăng nhập.
-- `publish_post.jpg`: Ảnh chụp màn hình khi tạo bài viết.
-- `view_post.jpg`: Ảnh chụp màn hình xem chi tiết bài viết.
-- `user_profile.jpg`: Ảnh chụp màn hình trang cá nhân người dùng.
+
