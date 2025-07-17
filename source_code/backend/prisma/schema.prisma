@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid()) @db.Char(36)
+  name      String
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+
+  posts     Post[]    @relation("UserPosts")
+  comments  Comment[] @relation("UserComments")
+}
+
+enum PostStatus {
+  Draft
+  Published
+}
+
+model Post {
+  id        String     @id @default(uuid()) @db.Char(36)
+  title     String
+  content   String     @db.LongText
+  status    PostStatus @default(Draft)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  // Quan hệ
+  user      User       @relation("UserPosts", fields: [userId], references: [id])
+  userId    String     @db.Char(36)
+  comments  Comment[]  @relation("PostComments")
+  postTags  PostTag[]  
+}
+
+model Comment {
+  id        String    @id @default(uuid()) @db.Char(36)
+  content   String    @db.Text
+  createdAt DateTime  @default(now())
+
+  post      Post      @relation("PostComments", fields: [postId], references: [id])
+  postId    String    @db.Char(36)
+
+  user      User      @relation("UserComments", fields: [userId], references: [id])
+  userId    String    @db.Char(36)
+
+  parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+  parentId  String?   @db.Char(36)
+  replies   Comment[] @relation("CommentReplies") //Danh sách các trả lời
+}
+
+model Tag {
+  id         String    @id @default(uuid()) @db.Char(36)
+  name       String    @unique
+  postTags   PostTag[] 
+}
+
+model PostTag {
+  postId String   @db.Char(36)
+  tagId  String   @db.Char(36)
+
+  post   Post     @relation(fields: [postId], references: [id])
+  tag    Tag      @relation(fields: [tagId], references: [id])
+
+  @@id([postId, tagId])
+}
+
